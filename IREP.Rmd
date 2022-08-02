@@ -8,10 +8,13 @@ editor_options:
 ---
 ```{r imports}
 library(tidyverse)
-library(banR)
+##library(banR)
+install.packages("devtools")
+devtools::install_github("joelgombin/banR", build_vignettes = TRUE)
 ```
 
 ```{r get_the_data}
+library(stringr)
 options(timeout = 600)
 data_dir <- 'data'
 
@@ -55,6 +58,9 @@ if (!file.exists(postcodes_destfile)) {
 ```
 
 ```{r load_data}
+library(tidyr)
+library(dplyr)
+library(readr)
 emissions <- read_csv(irep_emissions_csv,
                       col_types = 'ccfffdf')
 
